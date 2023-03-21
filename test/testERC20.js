@@ -123,14 +123,17 @@ describe("MintableToken", function () {
 				);
 			});
 			it("Approved user can transfer tokens to thirdparty users", async function () {
-				const { token, user1, user2 } = await loadFixture(
+				const { owner, token, user1 } = await loadFixture(
 					deployMintableTokenFixture,
 				);
 				await token.approve(user1.address, 100);
+				expect(await token.allowance(owner.address, user1.address)).to.equal(
+					100,
+				);
 				await token
 					.connect(user1)
-					.transferFrom(token.address, user2.address, 100);
-				expect(await token.balanceOf(user2.address)).to.equal(100);
+					.transferFrom(owner.address, user1.address, 100);
+				expect(await token.balanceOf(user1.address)).to.equal(100);
 			});
 		});
 	});
