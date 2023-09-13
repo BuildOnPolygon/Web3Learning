@@ -64,9 +64,9 @@ function getTokenURI(uint256 _id) public view returns (string memory){
     );
 }
   // For preventing transfer of the NFT
-  function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal override(ERC721) {
+  function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal virtual override(ERC721) {
     require(from == address(0), "LoyaltyMembershipNFT: This NFT cannot be transferred ");
-    super._beforeTokenTransfer(from, to, tokenId);
+    super._beforeTokenTransfer(from, to, tokenId,1);
    }
 
   function supportsInterface(bytes4 interfaceId) public view override(ERC721) returns (bool) {
