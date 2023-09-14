@@ -3,7 +3,11 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/Counters.sol";   
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-
+//@dev: This contract is for minting the NFTs for the users
+// This contract is inherited from ERC721
+// Only owner can mint the token
+// Token URI is set for each token
+ 
 contract UserAwards is ERC721{
 
   using Counters for Counters.Counter;
