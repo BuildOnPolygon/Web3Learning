@@ -54,7 +54,7 @@ function state() external view returns (uint256){
      }
     _nonce++;
   }
-// For 
+// For checking the user is a valid owner of the account
  function isValidSigner(address signer, bytes calldata context) external view returns (bytes4 magicValue){
 
     if(signer == owner()){
@@ -68,7 +68,7 @@ function state() external view returns (uint256){
     ) external view returns (bytes4 magicValue) {
       bool isValid = SignatureChecker.isValidSignatureNow(owner(), hash, signature);
       if(isValid){
-        //return MAGICVALUE;
+        //if successfully verified return MAGICVALUE;
         return MAGICVALUE;
       }
       // if not valid return empty bytes4 value
