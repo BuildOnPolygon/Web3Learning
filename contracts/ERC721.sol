@@ -16,13 +16,13 @@ contract NFTMinter is ERC721URIStorage {
 
    }
 
-    function mintNFT(address player, string memory tokenURI)
+    function mintNFT(address _player, string memory _tokenURI)
         public
         returns (uint256)
     {
         uint256 newItemId = _tokenIds.current();
-        _mint(player, newItemId);
-        _setTokenURI(newItemId, tokenURI);
+        _mint(_player, newItemId);
+        _setTokenURI(newItemId, _tokenURI);
 
         _tokenIds.increment();
         return newItemId;
